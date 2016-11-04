@@ -1,7 +1,9 @@
 
 package org.usfirst.frc.team1014.robot;
 
-import edu.wpi.first.wpilibj.IterativeRobot;
+import org.usfirst.frc.team1014.robot.commands.*;
+import edu.wpi.first.wpilibj.*;
+import edu.wpi.first.wpilibj.command.*;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -11,9 +13,12 @@ import edu.wpi.first.wpilibj.IterativeRobot;
  * directory.
  */
 public class Robot extends IterativeRobot {
+	
+	private Command teleDrive;
 
 	public void robotInit()
 	{
+		teleDrive = new TeleDrive();
 	}
 
 	public void disabledInit()
@@ -26,6 +31,7 @@ public class Robot extends IterativeRobot {
 
 	public void teleopInit()
 	{
+		Scheduler.getInstance().add(teleDrive);
 	}
 
 	public void testInit()
