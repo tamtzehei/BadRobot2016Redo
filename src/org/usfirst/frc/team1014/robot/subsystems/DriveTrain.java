@@ -2,10 +2,10 @@
 package org.usfirst.frc.team1014.robot.subsystems;
 
 import org.usfirst.frc.team1014.robot.RobotMap;
+import org.usfirst.frc.team1014.robot.util.SwerveWheel;
+import org.usfirst.frc.team1014.robot.util.Vector2d;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
-import util.SwerveWheel;
-import util.Vector2d;
 
 public class DriveTrain extends Subsystem {
 

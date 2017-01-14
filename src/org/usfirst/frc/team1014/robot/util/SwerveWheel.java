@@ -1,8 +1,11 @@
-package util;
+package org.usfirst.frc.team1014.robot.util;
+
+import com.ctre.CANTalon;
 
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Talon;
+import edu.wpi.first.wpilibj.TalonSRX;
 
 public class SwerveWheel {
 
@@ -21,8 +24,8 @@ public class SwerveWheel {
 	public SwerveWheel(int driveMotorPin, int swerveMotorPin, int encoderAPin, int encoderBPin, double encoderCPR)
 	{
 		this.encoderCPR = encoderCPR;
-		driveSpeedController = new Talon(driveMotorPin);
-		swerveSpeedController = new Talon(swerveMotorPin);
+		driveSpeedController = new CANTalon(driveMotorPin);
+		swerveSpeedController = new CANTalon(swerveMotorPin);
 		encoder = new Encoder(encoderAPin, encoderBPin);
 	}
 
@@ -30,12 +33,13 @@ public class SwerveWheel {
 	{
 		double physical_angle = getAngle();
 		double turn_speed = (-2d * Math.atan(ANGLE_DIFF_COEFFICIENT * (physical_angle - angle))) / Math.PI;
-		driveSpeedController.set(speed);
+		System.out.println(getAngle());
+		//driveSpeedController.set(speed);
 		swerveSpeedController.set(turn_speed);
 	}
 
 	private double getAngle()
 	{
-		return ((double) encoder.get()) / encoderCPR;
+		return 2*Math.PI*((double) encoder.get()) / encoderCPR;
 	}
 }
