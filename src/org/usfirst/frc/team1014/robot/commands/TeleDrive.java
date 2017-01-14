@@ -1,6 +1,8 @@
 package org.usfirst.frc.team1014.robot.commands;
 
+import org.usfirst.frc.team1014.robot.OI;
 import org.usfirst.frc.team1014.robot.subsystems.DriveTrain;
+import org.usfirst.frc.team1014.robot.util.Vector2d;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -12,9 +14,9 @@ public class TeleDrive extends Command {
 	}
 
 	@Override
-	protected void execute()
+	public void execute()
 	{
-		System.out.println("TeleDrive execute()");
+		DriveTrain.getInstance().drive(OI.xboxController0.getRawAxis(0), new Vector2d(OI.xboxController0.getRawAxis(4), -OI.xboxController0.getRawAxis(5)));
 	}
 
 	@Override

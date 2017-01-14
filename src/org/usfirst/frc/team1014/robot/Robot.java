@@ -14,10 +14,12 @@ import edu.wpi.first.wpilibj.command.*;
  */
 public class Robot extends IterativeRobot {
 	
-	private Command teleDrive;
+	private TeleDrive teleDrive;
 
 	public void robotInit()
 	{
+		System.out.println("Init");
+		OI.init();
 		teleDrive = new TeleDrive();
 	}
 
@@ -31,7 +33,7 @@ public class Robot extends IterativeRobot {
 
 	public void teleopInit()
 	{
-		Scheduler.getInstance().add(teleDrive);
+		
 	}
 
 	public void testInit()
@@ -48,6 +50,7 @@ public class Robot extends IterativeRobot {
 
 	public void teleopPeriodic()
 	{
+		teleDrive.execute();
 	}
 
 	public void testPeriodic()
